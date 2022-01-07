@@ -1,15 +1,13 @@
 from django import forms
 
 class ContactForm(forms.Form):
-    from_email = forms.EmailField(max_length = 150)
-    bcc = forms.EmailField(max_length = 150,required=False)
-    cc = forms.EmailField(max_length = 150,required=False)
-    reply_to = forms.EmailField(max_length = 150,required=False)
-    email_address = forms.EmailField(max_length = 150)
-    subject = forms.CharField(widget = forms.Textarea, min_length = 1, max_length = 10000)
-    extra_header = forms.CharField(widget = forms.Textarea, min_length = 1, max_length = 10000,required=False)
-    
-    message = forms.CharField(widget = forms.Textarea, min_length = 1, max_length = 2000)
-    html_content = forms.CharField(widget = forms.Textarea, min_length = 1, max_length = 2000,required=False)
-
+    from_email = forms.EmailField(label='From')
+    bcc = forms.CharField(required=False,widget = forms.Textarea)
+    cc = forms.CharField(required=False,widget = forms.Textarea)
+    reply_to = forms.CharField(required=False,widget = forms.Textarea)
+    email_address = forms.CharField(widget = forms.Textarea)
+    subject = forms.CharField(widget = forms.Textarea)
+    extra_header = forms.CharField(widget = forms.Textarea,required=False)
+    message = forms.CharField(widget = forms.Textarea)
+    html_content = forms.CharField(widget = forms.Textarea,required=False)
     attach = forms.FileField(widget=forms.ClearableFileInput(attrs={'multiple': True}), required=False)

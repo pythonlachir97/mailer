@@ -1,3 +1,4 @@
+{% load crispy_forms_tags %}
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,15 +22,16 @@
         <br>
         <h3>{{message}}</h3>
 		{{error}}
-    <form method="POST" action ="" enctype="multipart/form-data">
+    <form method="POST" action ="" enctype="multipart/form-data",class="uniForm" style="padding: 10 20;",name="mailForm">
         {% csrf_token %}
-        <div class = "form-group">
+        
             
-            <p> <h3>{{ form.as_p }}</h3></p>
+            
+                {{ form|crispy }}
             
 			<br>
             <input type="submit" value="Send" name="Send" class = 'btn btn-primary btn-lg'>
-                </div>
+                
             </form>
         </center>
 </body>

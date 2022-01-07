@@ -16,10 +16,13 @@ def index(request):
 
 
                 from_email = form.cleaned_data['from_email']
-                bcc = form.cleaned_data['bcc']
-                email_address = form.cleaned_data['email_address']
-                cc = form.cleaned_data['cc']
-                reply_to = form.cleaned_data['reply_to']
+                print(from_email)
+                bcc = form.cleaned_data['bcc'].split()
+                print(bcc)
+                email_address = form.cleaned_data['email_address'].split()
+                print(email_address)
+                #cc = form.cleaned_data['cc'].split()
+                #reply_to = form.cleaned_data['reply_to'].split()
                 
                 subject = form.cleaned_data['subject']
                 message = form.cleaned_data['message']
@@ -29,10 +32,10 @@ def index(request):
                     subject = subject, 
                     body = message,
                     from_email = from_email,
-                    to = [email_address],
-                    bcc=bcc,
-                    cc=cc,
-                    reply_to=reply_to,
+                    to = email_address,
+                    #bcc=bcc,
+                    #cc=cc,
+                    #reply_to=reply_to,
                     #headers={'MY-UNIQUE-HEAD':  '<http://www.xyz1234.de/unsubscribe123'},
                     connection=connection
 
